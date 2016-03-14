@@ -31,9 +31,9 @@ class AmazonAPI
     /**
      * Create a new Amazon order service instance based on the site passed.
      *
-     * @param  \App\Site $site
+     * @param  Site $site
      *
-     * @return Amazon\MarketplaceWebServiceOrders\Client.php\MarketplaceWebServiceOrders_Client $service
+     * @return MarketplaceWebServiceOrders_Client $service
      */
     public static function getOrdersService($site)
     {
@@ -60,8 +60,8 @@ class AmazonAPI
      * Invoke specific web service method passed, get response, process response,
      *    and return array of responses.
      *
-     * @param  Amazon\MarketplaceWebServiceOrders\Client.php\MarketplaceWebServiceOrders_Interface $service
-     * @param  Amazon\MarketplaceWebServiceOrders\Client.php\MarketplaceWebServiceOrders_Model_GetOrderRequest $request
+     * @param  MarketplaceWebServiceOrders_Interface $service
+     * @param  MarketplaceWebServiceOrders_Model_GetOrderRequest $request
      * @param  string $method_name
      *
      * @return array
@@ -87,7 +87,7 @@ class AmazonAPI
      *
      * @param  array $orderIDs
      * @param  int $site_id
-     * @param  \App\Site $site
+     * @param  Site $site
      *
      * @return array
      */
@@ -110,7 +110,7 @@ class AmazonAPI
      *
      * @param  string *DATETIME* $createdAfterDate
      * @param  int $site_id
-     * @param  \App\Site $site
+     * @param  Site $site
      *
      * @return array
      */
@@ -135,7 +135,7 @@ class AmazonAPI
      *
      * @param  string *DATETIME* $lastUpdatedAfterDate
      * @param  int $site_id
-     * @param  \App\Site $site
+     * @param  Site $site
      *
      * @return array
      */
@@ -160,7 +160,7 @@ class AmazonAPI
      *
      * @param  int $orderID
      * @param  int $site_id
-     * @param  \App\Site $site
+     * @param  Site $site
      *
      * @return array
      */
@@ -183,7 +183,7 @@ class AmazonAPI
      *
      * @param  string $nextToken
      * @param  int $site_id
-     * @param  \App\Site $site
+     * @param  Site $site
      *
      * @return array
      */
@@ -280,7 +280,7 @@ class AmazonAPI
      * Update existing or create new local, retail order for Amazon based on information provided.
      *
      * @param  array $orders_results
-     * @param  \App\Site $site
+     * @param  Site $site
      *
      * @return null
      */
@@ -363,7 +363,7 @@ class AmazonAPI
      *
      * @param  string *DATETIME* $lastUpdatedAfterDate
      * @param  int $site_id
-     * @param  \App\Site $site
+     * @param  Site $site
      *
      * @return null
      */
@@ -390,7 +390,7 @@ class AmazonAPI
      *
      * @param  string *DATETIME* $lastUpdatedAfterDate
      * @param  int $site_id
-     * @param  \App\Site $site
+     * @param  Site $site
      *
      * @return null
      */
@@ -541,7 +541,7 @@ class AmazonAPI
      * Find all orders with no products attached and attach the products the Amazon says the order has.
      *
      * @param  int $whsl_site_id
-     * @param  \App\Site $whsl_site
+     * @param  Site $whsl_site
      *
      * @return null
      */
