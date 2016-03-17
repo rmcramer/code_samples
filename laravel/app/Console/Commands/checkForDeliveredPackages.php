@@ -40,9 +40,9 @@ class checkForDeliveredPackages extends Command {
 	 */
 	public function fire()
 	{
-        \App\Helpers::loginAsAdminProcessUser();
+		\App\Helpers::loginAsAdminProcessUser();
 
-        \App\Shipments::updateUndeliveredShipments();
+		\App\Shipments::updateUndeliveredShipments();
 	}
 
 	/**
@@ -53,7 +53,7 @@ class checkForDeliveredPackages extends Command {
 	protected function getArguments()
 	{
 		return [
-	//		['example', InputArgument::REQUIRED, 'An example argument.'],
+			//		['example', InputArgument::REQUIRED, 'An example argument.'],
 		];
 	}
 
@@ -65,7 +65,7 @@ class checkForDeliveredPackages extends Command {
 	protected function getOptions()
 	{
 		return [
-	//		['example', null, InputOption::VALUE_OPTIONAL, 'An example option.', null],
+			//		['example', null, InputOption::VALUE_OPTIONAL, 'An example option.', null],
 		];
 	}
 
