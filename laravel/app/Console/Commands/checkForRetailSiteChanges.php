@@ -176,18 +176,16 @@ class checkForRetailSiteChanges extends Command {
         {
             case 'Amazon':
                 \AmazonAPI::findAndUpdateOrInsertAllOrdersLastUpdateAfter($update_after,$this->site->id,$this->site);
-                $this->comment("Command Finished.");
                 break;
             case 'Shopify':
                 \ShopifyAPI::findAndUpdateOrInsertAllOrdersUpdatedAfter($update_after,$this->site);
-                $this->comment("Command Finished.");
                 break;
             default:
-                $this->error("No logic set for retailer: " . $this->retailer);
-                return false;
+                return $this->error("No logic set for retailer: " . $this->retailer);
                 break;
 
         }
+        $this->comment("Command Finished.");
 	}
 
 	/**
