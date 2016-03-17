@@ -6,35 +6,35 @@ use Symfony\Component\Console\Input\InputArgument;
 
 class checkForRetailSiteChanges extends Command {
 
-	/**
-	 * The console command name.
-	 *
-	 * @var string
-	 */
-	protected $name = 'check:retailSites';
+    /**
+     * The console command name.
+     *
+     * @var string
+     */
+    protected $name = 'check:retailSites';
 
-	/**
-	 * The console command description.
-	 *
-	 * @var string
-	 */
-	protected $description = 'Check and download any changes to retail sites.';
+    /**
+     * The console command description.
+     *
+     * @var string
+     */
+    protected $description = 'Check and download any changes to retail sites.';
 
     var $site = null;
     var $retailer = null;
     var $possible_retailers = [ 'Shopify', 'Amazon' ];
     var $possible_retailers_list = '';
 
-	/**
-	 * Create a new command instance.
-	 *
-	 * @return void
-	 */
-	public function __construct()
-	{
+    /**
+     * Create a new command instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
         $this->generatePossibleRetailList();
         parent::__construct();
-	}
+    }
 
     public function generatePossibleRetailList()
     {
@@ -68,7 +68,7 @@ class checkForRetailSiteChanges extends Command {
             $errors[] = "Option --site is required. Site's ID, numeric. Ex. 1, 2, 3, ...";
         }
         else if (!is_numeric($options['site']) ||
-                 (string)(int)$options['site'] !== (string)$options['site'])
+            (string)(int)$options['site'] !== (string)$options['site'])
         {
             $errors[] = "Option --site must be an integer, the site's ID.";
         }
@@ -88,8 +88,8 @@ class checkForRetailSiteChanges extends Command {
             $errors[] = "Option --days_ago is required.";
         }
         else if (!is_numeric($options['days_ago']) ||
-                 (string)(int)$options['days_ago'] !== (string)$options['days_ago'] ||
-                 (int)$options['days_ago'] < 0)
+            (string)(int)$options['days_ago'] !== (string)$options['days_ago'] ||
+            (int)$options['days_ago'] < 0)
         {
             $errors[] = "Option --days_ago must be a positive integer.";
         }
@@ -129,7 +129,7 @@ class checkForRetailSiteChanges extends Command {
             $errors[] = 'The Site ID provided is not found.';
         }
         else if (!isset($this->site->cfg_array[strtoupper($this->retailer) . '_SYNC']) ||
-                 !$this->site->cfg_array[strtoupper($this->retailer) . '_SYNC']->typed_value)
+            !$this->site->cfg_array[strtoupper($this->retailer) . '_SYNC']->typed_value)
         {
             $errors[] = 'This site is not permitted to sync with ' . $this->retailer . '.';
         }
@@ -165,9 +165,9 @@ class checkForRetailSiteChanges extends Command {
         //  $this->info('Some info'); // Regular Text
 
         $update_after = date("Y-m-d",mktime(0,0,0,
-                                            (int)date("n"),
-                                            ((int)date("j") - $this->days_ago),
-                                            (int)date("Y")));
+            (int)date("n"),
+            ((int)date("j") - $this->days_ago),
+            (int)date("Y")));
 
         //   var_dump($update_after);
 
@@ -187,30 +187,30 @@ class checkForRetailSiteChanges extends Command {
         $this->comment("Command Finished.");
     }
 
-	/**
-	 * Get the console command arguments.
-	 *
-	 * @return array
-	 */
-	protected function getArguments()
-	{
-		return [
-	//		['example', InputArgument::REQUIRED, 'An example argument.'],
-		];
-	}
+    /**
+     * Get the console command arguments.
+     *
+     * @return array
+     */
+    protected function getArguments()
+    {
+        return [
+            //		['example', InputArgument::REQUIRED, 'An example argument.'],
+        ];
+    }
 
-	/**
-	 * Get the console command options.
-	 *
-	 * @return array
-	 */
-	protected function getOptions()
-	{
-		return [
-			['site', null, InputOption::VALUE_REQUIRED, "The site's numeric ID.", false],
+    /**
+     * Get the console command options.
+     *
+     * @return array
+     */
+    protected function getOptions()
+    {
+        return [
+            ['site', null, InputOption::VALUE_REQUIRED, "The site's numeric ID.", false],
             ['retailer', null, InputOption::VALUE_REQUIRED, "The retailer to check.", false],
             ['days_ago', null, InputOption::VALUE_OPTIONAL, "The number of days back to start looking.", false],
-		];
-	}
+        ];
+    }
 
 }
