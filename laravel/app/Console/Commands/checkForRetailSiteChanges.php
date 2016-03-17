@@ -6,8 +6,6 @@ use Symfony\Component\Console\Input\InputArgument;
 
 class checkForRetailSiteChanges extends Command {
 
-    const NUMBER_OF_DAYS_AGO = 3;
-
 	/**
 	 * The console command name.
 	 *
@@ -152,25 +150,26 @@ class checkForRetailSiteChanges extends Command {
 
         return true;
     }
-	/**
-	 * Execute the console command.
-	 *
-	 * @return mixed
-	 */
-	public function fire()
-	{
+
+    /**
+     * Execute the console command.
+     *
+     * @return mixed
+     */
+    public function fire()
+    {
 
         if (!$this->checkIfOptionsValid()) return false;
         if (!$this->checkIfOptionsAreAllowed()) return false;
 
-      //  $this->info('Some info'); // Regular Text
+        //  $this->info('Some info'); // Regular Text
 
         $update_after = date("Y-m-d",mktime(0,0,0,
                                             (int)date("n"),
                                             ((int)date("j") - $this->days_ago),
                                             (int)date("Y")));
 
-     //   var_dump($update_after);
+        //   var_dump($update_after);
 
         switch($this->retailer)
         {
@@ -186,7 +185,7 @@ class checkForRetailSiteChanges extends Command {
 
         }
         $this->comment("Command Finished.");
-	}
+    }
 
 	/**
 	 * Get the console command arguments.
